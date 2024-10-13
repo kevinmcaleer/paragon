@@ -1,11 +1,13 @@
 # Tasks
 
+from sqlmodel import Field, SQLModel, create_engine
 from datetime import date
 
-class Task:
+class Task(SQLModel, table=True):
 
-    start = date
-    end = date
+    id: int | None = Field(default=None, primary_key=True)
+    start: str
+    end: str
 
     def __init__(self, name, description, status):
         self.name = name

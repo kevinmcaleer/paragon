@@ -1,12 +1,14 @@
 # Projects 
 
+from pydantic import BaseModel, Field
+
 from .task import Task
 
-class Project:
+class Project(BaseModel):
 
-    name = ''
-    description = ''
-    _tasks = [Task]
+    name: str = Field(examples=['Project 1', 'Project 2'])
+    description: str = Field(examples=['A simple project', 'A complex project'])
+    _tasks: [Task] = Field
 
     def __init__(self, name, description, tasks):
         self.name = name
